@@ -253,7 +253,7 @@ For example, the following yaml adds a dog image \href{https://www.pexels.com/fr
   brand:
     structure: [dog, package, version]
     components:
-      dog: '<img src="https://images.pexels.com/photos/4681107/pexels-photo-4681107.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width:30px;"></img>'
+      dog: '<img alt="husky" src="https://images.pexels.com/photos/4681107/pexels-photo-4681107.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width:30px;"></img>'
 }\if{html}{\out{</div>}}
 
 You can also customise the colour scheme of the navbar by using the \code{type}
