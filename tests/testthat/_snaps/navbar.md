@@ -123,6 +123,9 @@
       $right
       [1] "<li>\n  <a href=\"https://github.com/r-lib/pkgdown/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"
       
+      $brand
+      [1] "<a class=\"navbar-link\" href=\"index.html\">testpackage</a> <span class=\"version label label-default\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"\">1.0.0</span>"
+      
 
 # data_navbar() can re-order default elements
 
@@ -138,6 +141,9 @@
       $right
       [1] "<li>\n  <a href=\"news/index.html\">Changelog</a>\n</li>"
       
+      $brand
+      [1] "<a class=\"navbar-link\" href=\"index.html\">testpackage</a> <span class=\"version label label-default\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"\">1.0.0</span>"
+      
 
 # data_navbar()can remove elements
 
@@ -152,6 +158,9 @@
       
       $right
       [1] "<li>\n  <a href=\"reference/index.html\">Reference</a>\n</li>"
+      
+      $brand
+      [1] "<a class=\"navbar-link\" href=\"index.html\">testpackage</a> <span class=\"version label label-default\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"\">1.0.0</span>"
       
 
 # render_navbar_links BS3 & BS4 default

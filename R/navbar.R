@@ -45,8 +45,7 @@ navbar_structure <- function() {
 navbar_links <- function(navbar, components, depth = 0L, bs_version = 3L) {
   # Take structure as is from meta
   structure <- modify_list(
-    navbar_structure(),
-    c(navbar$structure$left, navbar$structure$right)
+    navbar_structure(), navbar$structure
   )
 
   # Merge components from meta
