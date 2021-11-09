@@ -173,7 +173,8 @@ to danger). Finally, you can choose to override the default tooltip with
 \section{Navigation bar}{
 
 You can customise the navigation bar that appears at the top of the page with the \code{navbar} field.
-It's made up of two pieces: \code{structure}, which defines the overall layout, and \code{components}, which defines what each piece looks like.
+
+Navbar links, the main part of the navbar, is made up of two pieces: \code{structure}, which defines the overall layout, and \code{components}, which defines what each piece looks like.
 This organisation makes it easy to mix and match pkgdown defaults with your own customisations.
 
 This is the default structure:\if{html}{\out{<div class="sourceCode yaml">}}\preformatted{navbar:
@@ -236,6 +237,23 @@ For example, the following yaml adds a new "twitter" component that appears to t
       icon: fa-twitter
       href: http://twitter.com/hadleywickham
       aria-label: Twitter
+}\if{html}{\out{</div>}}
+
+You can also customize the "brand" part of the navbar which appears on the left and is not collapsed on any device.
+It's made up of two pieces: \code{structure}, which defines the overall layout, and \code{components}, which defines what each piece looks like.
+Like for navbar links, this organisation makes it easy to mix and match pkgdown defaults with your own customisations.
+
+This is the default structure:\if{html}{\out{<div class="sourceCode yaml">}}\preformatted{navbar:
+  brand:
+    structure:  [package, version]
+}\if{html}{\out{</div>}}
+
+To add a new component to the navbar brand, you need to modify both \code{brand.structure} and \code{brand.components}.
+For example, the following yaml adds a dog image \href{https://www.pexels.com/fr-fr/photo/husky-siberien-noir-et-blanc-4681107/}{from Pexels} left to the package name.\if{html}{\out{<div class="sourceCode yaml">}}\preformatted{navbar:
+  brand:
+    structure: [dog, package, version]
+    components:
+      dog: '<img src="https://images.pexels.com/photos/4681107/pexels-photo-4681107.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width:30px;"></img>'
 }\if{html}{\out{</div>}}
 
 You can also customise the colour scheme of the navbar by using the \code{type}
