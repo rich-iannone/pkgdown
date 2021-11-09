@@ -16,8 +16,9 @@ data_navbar <- function(pkg = ".", depth = 0L) {
     depth = depth,
     bs_version = pkg$bs_version
   )
+  brand <- list(brand = navbar_brand(pkg, depth))
 
-  c(style, links)
+  c(style, links, brand)
 }
 
 # Default navbar ----------------------------------------------------------
@@ -43,7 +44,10 @@ navbar_structure <- function() {
 
 navbar_links <- function(navbar, components, depth = 0L, bs_version = 3L) {
   # Take structure as is from meta
-  structure <- modify_list(navbar_structure(), navbar$structure)
+  structure <- modify_list(
+    navbar_structure(),
+    c(navbar$structure$left, navbar$structure$right)
+  )
 
   # Merge components from meta
   components_meta <- navbar$components %||% list()
@@ -159,6 +163,68 @@ navbar_articles <- function(pkg = ".") {
   print_yaml(menu)
 }
 
+navbar_brand <- function(pkg, depth) {
+  bs_version <- pkg$bs_version
+  meta_navbar_brand <- pkg$meta$navbar$brand
+  components <- modify_list(brand_components(pkg, depth), meta_navbar_brand$components)
+  structure <- meta_navbar_brand$structure %||% brand_structure()
+  paste0(components[structure], collapse = " ")
+}
+
+brand_structure <- function() {
+   c("package", "version")
+}
+
+brand_components <- function(pkg, depth) {
+  bs_version <- pkg$bs_version
+  list(
+    package = navbar_package_brand(pkg, bs_version, depth),
+    version = navbar_package_version(pkg, bs_version)
+  )
+}
+
+navbar_package_brand <- function(pkg, bs_version, depth) {
+
+  root <- up_path(depth)
+  title <- pkgdown_site_title(pkg)
+
+  if (bs_version == 3) {
+    sprintf(
+      '<a class="navbar-link" href="%sindex.html">%s</a>',
+      root,
+      title
+    )
+  } else {
+    sprintf(
+      '<a class="navbar-brand me-2" href="%sindex.html">%s</a>',
+      root,
+      title
+    )
+  }
+}
+
+navbar_package_version <- function(pkg, bs_version) {
+
+  label <- pkg$development$version_label
+  tooltip <- pkg$development$version_tooltip
+  version <- pkg$version
+
+  if (bs_version == 3) {
+    sprintf(
+      '<span class="version label label-%s" data-toggle="tooltip" data-placement="bottom" title="%s">%s</span>',
+      label,
+      tooltip,
+      version
+    )
+  } else {
+    sprintf(
+      '<small class="nav-text text-%s me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="%s">%s</small>',
+      label,
+      tooltip,
+      version
+    )
+  }
+}
 
 # Menu helpers -------------------------------------------------------------
 
