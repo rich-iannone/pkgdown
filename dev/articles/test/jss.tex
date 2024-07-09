@@ -1,10 +1,10 @@
 \documentclass[
   nojss]{jss}
 
-\usepackage[utf8]{inputenc}
+%% recommended packages
+\usepackage{orcidlink,thumbpdf,lmodern}
 
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage[utf8]{inputenc}
 
 \author{
 FirstName LastName\\University/Company \And Second Author\\Affiliation
@@ -39,17 +39,21 @@ The abstract of the article.
   URL: \url{https://rstudio.com}\\~\\
     }
 
-% Pandoc syntax highlighting
 
-% Pandoc citation processing
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
 
 
 
 
 \begin{document}
 
-\hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+
+
+\section{Introduction}\label{introduction}
 
 Some text and a reference \citep{JSSv059i10}.
 
@@ -66,5 +70,5 @@ R> 1 +
 \bibliography{jss.bib}
 
 
-\end{document}
 
+\end{document}
